@@ -11,19 +11,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "sh 'npm install'"
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                echo "sh './jenkins/scripts/test.sh'"
+                sh './jenkins/scripts/test.sh'
             }
         }
         stage('Deliver') {
             steps {
-                echo "sh './jenkins/scripts/deliver.sh'"
-                echo "input message: 'Finished using the web site? (Click Proceed to continue)?'"
-                echo "sh './jenkins/scripts/kill.sh'"
+                sh './jenkins/scripts/deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)?'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
